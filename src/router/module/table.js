@@ -2,9 +2,10 @@ import Layout from '@/layout/index.vue'
 const DragTable = () => import('@/views/table/dragTable.vue')
 const DyTable = () => import('@/views/table/dyTable.vue')
 
-const tableRoute = [{
-  path: '/',
+const tableRoute = {
+  path: '/table',
   component: Layout,
+  redirect: '/table/dragTable',
   children: [{
     name: 'dragTable',
     path: 'dragTable',
@@ -12,9 +13,9 @@ const tableRoute = [{
   },
   {
     name: 'dyTable',
-    path: '/dyTable',
+    path: 'dyTable',
     component: DyTable
   }]
 
-}]
+}
 export default tableRoute

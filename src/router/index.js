@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/',
     component: Layout,
-    redirecrt: 'home',
+    redirect: '/home',
     children: [{
       name: 'Home',
       path: 'home',
@@ -20,9 +20,9 @@ const routes = [
 ]
 const files = require.context('./module', false, /\.js$/)
 files.keys().forEach((key) => {
-  routes[0].children.concat(files(key).default)
+  routes.push(files(key).default)
 })
-
+console.log(routes)
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
