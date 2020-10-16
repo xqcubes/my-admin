@@ -10,10 +10,15 @@ const routes = [
     path: '/',
     component: Layout,
     redirect: '/home',
+
     children: [{
       name: 'Home',
       path: 'home',
-      component: Home
+      component: Home,
+      meta: {
+        icon: '',
+        name: '首页'
+      }
     }]
   }
 

@@ -6,15 +6,24 @@ const tableRoute = {
   path: '/table',
   component: Layout,
   redirect: '/table/dragTable',
+  meta: {
+    name: '表格'
+  },
   children: [{
     name: 'dragTable',
     path: 'dragTable',
-    component: DragTable
+    component: DragTable,
+    meta: {
+      name: '拖拽表格'
+    }
   },
   {
     name: 'dyTable',
     path: 'dyTable',
-    component: DyTable
+    component: DyTable,
+    meta: {
+      name: '动态表格'
+    }
   }]
 
 }

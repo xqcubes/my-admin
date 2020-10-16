@@ -1,8 +1,8 @@
 <template>
   <div class="nav-menu">
 
-      <el-menu class="el-menu-vertical-demo"  background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
-            <re-menu v-for="(it,id) in menuData" :key="id+'a'" :item="it"></re-menu>
+      <el-menu  router class="el-menu-vertical-demo"  background-color="#545c64" text-color="#fff" active-text-color="#ffd04b">
+            <re-menu v-for="(it,id) in menuData" :key="id+'a'" :item="it" ></re-menu>
       </el-menu>
   </div>
 </template>
@@ -16,32 +16,36 @@ export default {
     ReMenu
 
   },
+  mounted () {
+    this.menuData = this.$router.options.routes
+    console.log(this.$router.options.routes)
+  },
   data () {
     return {
       menuData: [
-        { label: '菜单1', value: '1' },
-        {
+        // { label: '菜单1', value: '1' },
+        // {
 
-          label: '菜单2',
-          value: '2',
-          children: [
-            { label: '菜单2-1', value: '2-1' },
-            {
-              label: '菜单2-2',
-              value: '2-2',
-              children: [
-                { label: '菜单2-2-1', value: '2-2-1' }
-              ]
-            }
-          ]
-        },
-        {
-          label: '菜单3',
-          value: '3',
-          childern: [{
-            label: '菜单3-1', value: '3-1'
-          }]
-        }
+        //   label: '菜单2',
+        //   value: '2',
+        //   children: [
+        //     { label: '菜单2-1', value: '2-1' },
+        //     {
+        //       label: '菜单2-2',
+        //       value: '2-2',
+        //       children: [
+        //         { label: '菜单2-2-1', value: '2-2-1' }
+        //       ]
+        //     }
+        //   ]
+        // },
+        // {
+        //   label: '菜单3',
+        //   value: '3',
+        //   childern: [{
+        //     label: '菜单3-1', value: '3-1'
+        //   }]
+        // }
       ]
     }
   }

@@ -1,16 +1,17 @@
 <template>
  <div class="re-menu">
 
-    <el-submenu v-if="item.children&&item.children.length>0" :index="item.value">
-       <template slot="title">
-            {{item.label}}
+   <el-menu-item v-if="!item.children || (item.children&&!item.meta)" :index="`${path}/${item.path}`">
+     <span v-if="item.children && item.children.length===1">{{item.children[0].meta.name}} </span>
+     <span v-else slot="title">{{item.meta.name}}</span>
+   </el-menu-item>
+   <el-submenu v-else :index="`${path}/${item.path}`">
+       <template slot="title" v-if="item.meta">
+            {{item.meta.name}}
         </template>
-          <re-menu  v-for="(child,index) in item.children" :key="index" :item="child">
+          <re-menu  v-for="(child,index) in item.children" :key="index" :item="child" :path="`${path}${item.path}`">
           </re-menu>
     </el-submenu>
-   <el-menu-item v-else :index="item.value">
-     <span slot="title">{{item.label}}</span>
-     </el-menu-item>
  </div>
 </template>
 
@@ -23,6 +24,10 @@ export default {
     item: {
       type: Object,
       default: () => {}
+    },
+    path: {
+      type: String,
+      default: ''
     }
   },
   mounted () {

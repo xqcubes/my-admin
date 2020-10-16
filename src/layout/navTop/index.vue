@@ -1,6 +1,8 @@
 <template>
   <div class="nav-top">
-      <div class="nav-left"></div>
+      <div class="nav-left">
+         {{$route.path}}
+      </div>
       <div class="nav-right">
 
       </div>
